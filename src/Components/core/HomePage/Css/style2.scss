@@ -1,0 +1,39 @@
+// body {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: hsl(210, 50%, 14%);
+//     height: 100vh
+//   }
+  
+  $vw-width: 15vw;
+  $vw-height: calc(#{$vw-width} / (1/ 1));
+  $tod-tri: #ff00ff;
+  $gold-tri: #fccc47;
+  
+  .shadow {
+    filter: drop-shadow(10px 10px 200px $tod-tri) drop-shadow(-10px -10px 50px $tod-tri);
+  }
+  
+  .triangle-wrapper {
+    width: $vw-width;
+    height: $vw-height;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: $tod-tri;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .triangle {
+    width: calc(#{$vw-width} - 30px);
+    height: calc(#{$vw-width} - 30px);
+    background-color: hsl(210, 50%, 14%);
+    //background-color: $gold-tri;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    margin-top: 10px;
+    filter: blur(115px) drop-shadow(-10px -10px 75px $tod-tri);
+    p {
+      color: #FFF;
+    }
+  }

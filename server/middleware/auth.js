@@ -1,0 +1,103 @@
+const jwt=require('jsonwebtoken');
+const User=require('../models/User');
+require('dotenv').config();
+
+// auth
+exports.auth=async(req,res,next)=>{
+    try{
+        const token=req.cookies.token || req.body.token || req.header("Authorisation").replace("Bearer ","");
+        
+        if(!token){
+            return res.status(401).json({
+                success:false,
+                message:"token not present",
+            })
+        }
+
+        // verify the token
+
+        try{
+            const decode=await jwt.verify(token,process.env.JWT_SECRET);
+            console.log(decode);
+            req.user=decode;
+
+        }catch(err){
+            return res.status(401).json({
+                success:false,
+                message:"token does not verify",
+            })
+        }
+    
+        next();
+    
+    }catch (err){
+        return res.status(401).json({
+            success:false,
+            message:"error occur during Authorisation",
+        })
+    }
+}
+
+
+// isStudent
+
+exports.isStudent=async(req,res,next)=>{
+    try{
+        if(req.user.accountType!=='Student'){
+            return res.status(401).json({
+                success:false,
+                message:"This is protected route for Student",
+            })
+        }
+
+        next();
+
+    }catch(err){
+        return res.status(401).json({
+            success:false,
+            message:"error occur during isStudent Authorisation",
+        })
+    }
+}
+
+// isInstructor
+
+exports.isInstructor=async(req,res,next)=>{
+    try{
+        if(req.user.accountType!=='Instructor'){
+            return res.status(401).json({
+                success:false,
+                message:"This is protected route for Instructor",
+            })
+        }
+
+        next();
+
+    }catch(err){
+        return res.status(401).json({
+            success:false,
+            message:"error occur during isInstructor Authorisation",
+        })
+    }
+}
+
+// isAdmin
+
+exports.isAdmin=async(req,res,next)=>{
+    try{
+        if(req.user.accountType!=='Admin'){
+            return res.status(401).json({
+                success:false,
+                message:"This is protected route for Admin",
+            })
+        }
+
+        next();
+
+    }catch(err){
+        return res.status(401).json({
+            success:false,
+            message:"error occur during isAdmin Authorisation",
+        })
+    }
+}
