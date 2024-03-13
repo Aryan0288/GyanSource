@@ -93,7 +93,7 @@ const Navbar = () => {
                               ?.map((subLink, i) => (
                                 <Link
                                   to={`/catalog/${subLink.name
-                                    .split(" ")
+                                    .split("/")
                                     .join("-")
                                     .toLowerCase()}`}
                                   className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"

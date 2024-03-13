@@ -2,7 +2,9 @@ import React from 'react'
 
 const Catalog = () => {
   return (
-    <div>Catalog</div>
+    <div className='text-white text-4xl'>
+        I am in catalog Page
+    </div>
   )
 }
 
