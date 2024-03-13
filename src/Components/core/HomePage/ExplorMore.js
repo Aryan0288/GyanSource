@@ -37,13 +37,13 @@ const ExplorMore = () => {
                 Learn to build you can imagine
             </p>
 
-            <div className='flex rounded-full bg-richblack-800 mb-5 mt-5 px-[15px] py-[7px] '>
+            <div className='w-7/12 mx-auto flex rounded-full bg-richblack-800 mb-5 mt-5 px-[10px] py-[7px] '>
                 {
                     tabsName.map((ele, index) => {
                         return (
-                            <div className={`text-[16px] flex items-center gap-2
+                            <div className={`text-[16px] flex items-center mx-auto
                         ${currentTab === ele ? 'bg-richblack-900 text-richblack-5 font-medium' : 'text-richblack-200'}
-                        rounded-full transition-all duration-200 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-8 mx-1 py-2
+                        rounded-full transition-all duration-200 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-7 mx-1 py-[6px]
                         `} key={index}
                                 onClick={() => setMyCards(ele)}
                             >
@@ -54,10 +54,11 @@ const ExplorMore = () => {
                 }
             </div>
 
-            <div className='h-[150px]'></div>
+            <div className='h-[70px]'></div>
 
             {/* couse group */}
-            <div className='flex gap-10 justify-between w-full'>
+            <div className='relative flex gap-10 justify-between cursor-pointer'>
+                
                 {
                     courses.map((ele, index) => {
                         return (

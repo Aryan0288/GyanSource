@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import '../App.css'
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa'
@@ -12,6 +12,7 @@ import TimelinSection from '../Components/core/HomePage/TimelinSection';
 import LearningLanguageSection from '../Components/core/HomePage/LearningLanguageSection';
 import InstructorSection from '../Components/core/HomePage/InstructorSection';
 import ExplorMore from '../Components/core/HomePage/ExplorMore';
+import Footer from '../Components/common/Footer';
 
 const Home = () => {
     return (
@@ -37,7 +38,7 @@ const Home = () => {
                 </div>
 
                 <div className='flex gap-7 mt-8'>
-                    <CTAButton active={true} linkto={"/siignup"}>Learn More</CTAButton>
+                    <CTAButton active={true} linkto={"/signup"}>Learn More</CTAButton>
                     <CTAButton active={false} linkto={"/login"}>Book a demo</CTAButton>
                 </div>
 
@@ -47,7 +48,7 @@ const Home = () => {
                         autoPlay
                         loop
                     >
-                        <source src={banner} type='video/mp4' />
+                        <source src={banner} onLoad={lazy} type='video/mp4' />
                     </video>
                 </div>
 
@@ -97,10 +98,13 @@ const Home = () => {
 
                 {/* code section -2 */}
 
-                <div className='relative'>
+                <div className='relative mb-[5rem] lg:pb-[22rem]'>
                     <div className='absolute left-[9rem] top-[9rem]'>
                         <GlowEffect />
                     </div>
+                    {/* <div className='absolute left-[6.5rem] top-[12rem]'>
+                        <GlowEffect />
+                    </div> */}
                     <CodeBlocks
                         position={"lg:flex-row-reverse"}
                         heading={
@@ -134,17 +138,18 @@ const Home = () => {
                         codeColor={"text-[#00FFFF]"}
                     />
                 </div>
+                <div className='absolute -bottom-32'>
+                    <ExplorMore />
+                </div>
 
-                <ExplorMore/>
-            
             </div>
 
 
             {/* section 2 */}
 
-            <div className="bg-pure-greys-5 text-richblack-700">
-                <div className='homepage_bg h-[310px]'>
-                    <div className='h-[150px]'></div>
+            <div className="bg-pure-greys-5 text-richblack-700 ">
+                <div className='homepage_bg h-[310px] ' >
+                    <div className='h-[180px]'></div>
                     <div className='w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
                         <div className='flex gap-7 text-white'>
                             <CTAButton active={true} linkto={"/signup"}>
@@ -163,7 +168,7 @@ const Home = () => {
                 </div>
 
 
-                <div className='mt-24 mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7'>
+                <div className='mt-24 pb-16 mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7'>
                     <div className=' flex gap-5 mt-[95px ] mb-10'>
                         <div className='text-4xl font-semibold w-[45%]'>
                             Get the Skiills you need for a
@@ -182,12 +187,13 @@ const Home = () => {
                         </div>
                     </div>
 
-                        {/* Time line section  */}
+                    {/* Time line section  */}
                     <TimelinSection />
 
                     {/* learning language section */}
 
-                    <LearningLanguageSection/>
+                    <LearningLanguageSection />
+
                 </div>
             </div>
             {/* <div className='bg-white'> */}
@@ -195,8 +201,8 @@ const Home = () => {
 
             {/* section 3 */}
 
-            <div className='w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
-                <InstructorSection/>
+            <div className=' w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
+                <InstructorSection />
                 <h2 className='text-center text-4xl font-semibold mt-10'>
                     reviews from Other Learners
                 </h2>
@@ -205,6 +211,11 @@ const Home = () => {
             </div>
 
             {/* section 4 */}
+
+
+
+            {/* footer */}
+            <Footer/>
         </div>
     )
 }
